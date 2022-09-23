@@ -1,17 +1,17 @@
 Tabla de contenido
 =================
 
-   * [GIT](#GUIT)
-      * [Clone](#clone)
-      * [Commit](#commit)
-      * [¿Cómo subir carpeta del directorio local al repositorio?](#¿Cómo-subir-carpeta-del-directorio-local-al-repositorio?)
+   * GIT
+      * Clone
+      * Commit
+      * ¿Cómo subir carpeta del directorio local al repositorio?
    
-   * [POOBCHIS](#poobchis)
-       * [Malas prácticas](#Malas-practicas)
-          * [Principios SOLID](#principios-solid)
-          * [Modelo-Vista-Controlador](#modelo-vista-controlador)
-          * [Unit Test](#unit-test)    
-       * [PATTERNS](#patterns)
+   * POOBCHIS
+       * Malas prácticas
+          * Principios SOLID
+          * Modelo-Vista-Controlador
+          * Unit Test    
+       * PATTERNS
    
    # GUIT 
    ### Clone
@@ -160,19 +160,23 @@ Tabla de contenido
    
    ###  🛠️Solución 
    
-   Para este problema se dará varios ejemplos de cuáles podrían ser los test para esta aplicación. 
+   Para este problema, se analizara los diferentes casos y se imaginará algunas opciones de nombramiento. 
    
-      * Dado_UnNumero_Cuando_EsTres_Entonces_SeGeneraTurnoVentajosa
-      * Dado_UnNumero_Cuando_EsCinco_Entonces_SacaLaFichaDeLaCasa
-      * Ddo_UnTipoDeTablero_Cuando_SeEscogeComodines_Entonces_LasCasillasAparecenConComodines
+   ### PATRON DE NOMBRAMIENTO 
    
-   ## Patterns 
+      * GIVE RollDices WHEN turnoVentajosaOn THEN moveTotalMas1
       
-   Programa fuertemente acoplado 
+  En esta "prueba unitaria" se pretende mostrar que cuando se lanzan los dados y el turno ventajosa está activo, entonces cada tres turnos, se mueve la sumatoria de lo que dieron los dados mas 1 
       
-   ![image](https://user-images.githubusercontent.com/63822072/190795463-6cb93989-0d21-4110-b473-d72768163141.png)
-
-   ![image](https://user-images.githubusercontent.com/63822072/190796306-1b026670-3f88-4ea7-8c0c-509ece3fcea8.png)
+      * GIVE RollDices WHEN execute THEN changePlayer
+      
+  En esta prueba se pretende revisar que cuando se lanzan los dados y un jugador mueva sus fichas, cambie de turno y el otro jugador realice su lanzamiento 
+       
+      * GIVE RollDices WHEN NormalPiece THEN move
+      
+   En esta prueba se pretende revisar que cuando se lance los dados, el movimiento de las fichas sea el mismo al que salió en los dados. Es decir, si los dados sumaron 10, ese sea el movimiento que se hagan con las fichas. 
+   
+ La idea de poder llevar a cabo la implementacion de las pruebas es que cumplan con el principio FIRST, en el cual estos test se puedan ejecutar en cuestión de segundos y así poder detectar bugs de forma más rápida y sencilla. Además se piensa que todas deben de ser independientes de las otras y que el resultado de las pruebas debe ser el mismo independientemente del servidor o el sistema en el que se ejecute. 
 
       
       
