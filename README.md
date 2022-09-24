@@ -79,13 +79,25 @@ Tabla de contenido
 
    ### S: Principio de responsabilidad única
    
-   Este principio se puede evidenciar de buena manera en el código planteado. Por ejemplo : 
-   
-   ![image](https://user-images.githubusercontent.com/63822072/190730398-f6a80302-d1d7-4b1d-9942-475486273f38.png)
+ Este principio se viola, debido a que la clase play se encarga de varios cosas. 
+ Este principo establece que un componente o clase debe tener una responsabilidad única, sencilla y concreta, para que así se pueda simplificar el código al evitar que existan clases que cumplan con múltiples funciones, las cuales son difíciles de memorizar y muchas veces significan una pérdida de tiempo buscando qué parte del código hace qué función. Veamos lo siguiente     
+ 
+ ### Método rollDices: Se encarga de lanzar los dados 
+ 
+ ![image](https://user-images.githubusercontent.com/63822072/192096968-e7510dec-7241-44c0-a75e-6c66c2d7bec2.png)
+ 
+ ### Método play: Lógica del juego 
+ 
+ ![image](https://user-images.githubusercontent.com/63822072/192097014-072c6744-b23a-4882-af42-21b21058b010.png)
 
-  En esta imagen podemos ver que en el método play de la clase de parchis, se evidencia que cumple una unica responsabilidad que es la de llevar la lógica del juego propuesto. 
+ ### Método getCasilla: Obtiene las casillas del juego 
+ 
+ ![image](https://user-images.githubusercontent.com/63822072/192097049-d803ef68-9e32-4f45-a5e4-6530760d4f90.png)
+ 
+  ###  🛠️ Solución 
    
-   
+   Para que cumpla con este principio podríamos hacer lo siguiente podriamos separar las responsabilidades de la clase, es decir, se crea otras clases que se encargue de las operaciones y sea mejor eficiente. 
+  
    ### O: Principio abierto/cerrado
    
    ### 1. TIPO DE DADOS 
@@ -120,23 +132,43 @@ Tabla de contenido
    
    ### L: Principio de substitución de Liskov
    
-   Este principio se puede evidenciar de buena manera en el código planteado. Por ejemplo :
+   En este principio, deducimos que está bien implementado, ya que podemos usar cualquiera de sus subclases sin interferir en la funcionalidad del programa.  
    
-   ![image](https://user-images.githubusercontent.com/63822072/190756863-cd8059af-b07a-48af-a92e-50afd96a8791.png)
-   
-   En esta imagen podemos ver que la clase ventajosa abstrae los metodos de la clase extenida de piece, por lo que al utilizar la clase hija, el programa sigue siendo valido. 
+   ![image](https://user-images.githubusercontent.com/63822072/192097224-5ac67e36-90b7-400a-8aea-bcd4f0c7776a.png)
    
 
    ### I: Principio de segregación de interfaz
    
    En el codigo no exite interfaces 
    
+   ![image](https://user-images.githubusercontent.com/63822072/192097894-1cc44b84-6b03-4e0b-bfcc-235638ac7c59.png)
+
+   
    ###  🛠️ Solución 
   
   La solución a esto, sería crear una interfaz de objetos, en el cual no limite solo un tipo de pieza y/o un tipo de tablero 
+  
+  ![image](https://user-images.githubusercontent.com/63822072/192098280-e5f8c859-41da-436f-b031-add5f389e27d.png)
+
+  
+  
    ### D: Principio de inversión de dependencias
 
+   Algunas partes están fuertemente acopladas 
    
+   ![image](https://user-images.githubusercontent.com/63822072/192097397-daebeb99-0ac8-4151-9c16-0501cd5dd29b.png)
+
+  ###  🛠️ Solución
+  
+  Para este principio, pensamos en implementar FACTORY METHOD como solución de este problema 
+  
+  ## FACTORY METHOD 
+  
+  Patrón de diseño creacional que proporciona una interfaz para crear objetos en una superclase, mientras permite a las subclases alterar el tipo de objetos que se crearán.
+  El patrón Factory Method sugiere que, en lugar de llamar al operador new para construir objetos directamente, se invoque a un método fábrica especial (en este caso una clase que cree los diferentes objetos). Los objetos se siguen creando a través del operador new, pero se invocan desde el método fábrica. Los objetos devueltos por el método fábrica a menudo se denominan productos.
+  
+  Podemos llegar a crear una interfaz que se encargue de crear los objetos. 
+
    ### MVC
    
    Miremos las siguientes partes del codigo: 
